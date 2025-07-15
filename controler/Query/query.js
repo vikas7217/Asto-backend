@@ -7,9 +7,9 @@ exports.CreateQuery = async(req,res)=>{
         
     const query = await Query.create(req.body)
 
-    if(query){
+    // if(query){
         const mail = inquiryMail(req.body)
-    }
+    // }
 
     query.save();
 
