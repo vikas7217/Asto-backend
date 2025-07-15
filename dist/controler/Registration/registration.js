@@ -7,7 +7,6 @@ exports.CreateRegis = async (req, res) => {
     confirmPassword,
     contactNumber
   } = req.body;
-  console.log(req.body);
   try {
     const isEmailExist = await User.findOne({
       email

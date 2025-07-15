@@ -2,7 +2,6 @@ const User = require("../../module/registration.js");
 
 exports.CreateRegis = async (req, res) => {
   const { name, email, password, confirmPassword, contactNumber } = req.body;
-  console.log(req.body);
 
   try {
     const isEmailExist = await User.findOne({ email });

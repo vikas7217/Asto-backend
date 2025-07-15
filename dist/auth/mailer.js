@@ -52,8 +52,7 @@ exports.Mail = async body => {
     };
     const info = await transport.sendMail(sentMassageToClient);
     const info2 = await transport.sendMail(sentMassageToAstro);
-    console.log("mail sented successfully", info);
-    console.log("mail sented successfully 222", info2);
+    
     return info;
   } catch (error) {
     console.log("Mail senting error:", error);
@@ -80,7 +79,6 @@ exports.inquiryMail = async body => {
     };
     const info = await transport.sendMail(sentMassageToAstro);
     const info1 = await transport.sendMail(sentMassageToClient);
-    console.log(info1, 'inquiry mail', info);
   } catch (error) {
     console.log(error);
   }

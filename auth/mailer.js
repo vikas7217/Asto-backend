@@ -24,8 +24,6 @@ const transport = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.PASSKEY,
   },
-  logger: true,
-  debug: true,
 });
 
 exports.Mail = async (body) => {
@@ -50,10 +48,7 @@ exports.Mail = async (body) => {
 
     const info = await transport.sendMail(sentMassageToClient);
     const info2 = await transport.sendMail(sentMassageToAstro);
-    console.log("mail sented successfully", info);
-    console.log("mail sented successfully 222", info2);
-
-    return info;
+     return info;
   } catch (error) {
     console.log("Mail senting error:", error);
     return { error };
@@ -83,7 +78,6 @@ exports.inquiryMail = async (body) => {
 
   const info = await transport.sendMail(sentMassageToAstro);
   const info1 = await transport.sendMail(sentMassageToClient);
-  console.log(info1,'inquiry mail',info)
     
   } catch (error) {
     console.log(error)
