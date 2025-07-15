@@ -1,0 +1,39 @@
+{
+  "name": "asto-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vikas7217/Asto-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vikas7217/Asto-backend/issues"
+  },
+  "homepage": "https://github.com/vikas7217/Asto-backend#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.13",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "json-server": "^1.0.0-beta.3",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
+    "mongodb": "^6.17.0",
+    "mongoose": "^8.16.3",
+    "mongoose-sequence": "^6.0.1",
+    "multer": "^2.0.1",
+    "nodemailer": "^7.0.5",
+    "nodemon": "^3.1.10",
+    "smtp-channel": "^0.2.4",
+    "smtp-client": "^0.4.0",
+    "smtp-server": "^3.14.0"
+  }
+}
