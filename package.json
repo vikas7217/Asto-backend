@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel . --out-dir dist --ignore node_modules,test",
+     "watch": "babel . --out-dir dist --watch --ignore node_modules,test"
   },
   "repository": {
     "type": "git",
@@ -35,5 +37,10 @@
     "smtp-channel": "^0.2.4",
     "smtp-client": "^0.4.0",
     "smtp-server": "^3.14.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.0",
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0"
   }
 }
