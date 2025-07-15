@@ -6,11 +6,9 @@ exports.CreateQuery = async(req,res)=>{
     try {
         
     const query = await Query.create(req.body)
-    console.log(query)
 
     if(query){
         const mail = inquiryMail(req.body)
-        console.log(mail,'====================')
     }
 
     query.save();

@@ -8,7 +8,6 @@ exports.CreateQuery = async (req, res) => {
     console.log(query);
     if (query) {
       const mail = inquiryMail(req.body);
-      console.log(mail, '====================');
     }
     query.save();
     res.status(200).json({
