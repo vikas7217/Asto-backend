@@ -1,11 +1,11 @@
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const registration = require('./route/auth/auth');
+const registration = require("./route/auth/auth");
 const PORT = process.env.PORT || 8000;
 const mongoose = require("mongoose");
-const queryRoute = require('./route/query/query')
+const queryRoute = require("./route/query/query");
 
 app.use(cors());
 app.use(express.json());
@@ -18,8 +18,8 @@ app.use((err, req, res, next) => {
 
 // routes
 
-app.use('/api/auth', registration);
-app.use('/api/query',queryRoute)
+app.use("/api/auth", registration);
+app.use("/api/query", queryRoute);
 
 // Test endpoint
 app.get("/test", (req, res) => {
@@ -30,7 +30,6 @@ app.get("/test", (req, res) => {
     res.status(500).json({ message: "Error in test endpoint" });
   }
 });
-
 
 // Handle 404 for undefined routes
 app.use((req, res) => {

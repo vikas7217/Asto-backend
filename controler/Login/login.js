@@ -1,5 +1,5 @@
 const Registration = require("../../module/registration");
-const jwt = require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
 
 // Generate JWT with 2h expiry
 const generateToken = (id, email, name) => {
@@ -15,12 +15,10 @@ exports.Login = async (req, res) => {
   const isPasswordValid = await isEmailExist.matchPassword(password);
 
   if (!isEmailExist) {
-    res
-      .status(400)
-      .json({
-        isSuccess: false,
-        message: "User dose not exist with this email",
-      });
+    res.status(400).json({
+      isSuccess: false,
+      message: "User dose not exist with this email",
+    });
   }
   if (!isPasswordValid) {
     res.status(400).json({ isSuccess: false, message: "Invalid credential" });
@@ -31,11 +29,9 @@ exports.Login = async (req, res) => {
   // Generate JWT with 2h expiry
   const token = generateToken(regId, email, password);
 
-  res
-    .status(200)
-    .json({
-      isSuccess: true,
-      token: token,
-      expiresIn: process.env.JWT_EXPIRES_IN,
-    });
+  res.status(200).json({
+    isSuccess: true,
+    token: token,
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
 };
