@@ -24,13 +24,11 @@ exports.CreateRegis = async (req, res) => {
       .json({ isSuccess: true, message: "User created successfully" });
   } catch (error) {
     console.error(error);
-    res
-      .status(500)
-      .json({
-        isSuccess: false,
-        message: "Server error",
-        error: error.message,
-      });
+    res.status(500).json({
+      isSuccess: false,
+      message: "Server error",
+      error: error.message,
+    });
   }
 };
 
@@ -40,11 +38,9 @@ exports.GetAll = async (req, res) => {
     const data = User.find(search);
     res.status(200).json({ isSuccess: true, data: data });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        isSuccess: false,
-        error: error.message,
-      });
+    res.status(500).json({
+      isSuccess: false,
+      error: error.message,
+    });
   }
 };

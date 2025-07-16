@@ -27,8 +27,7 @@ const transport = nodemailer.createTransport({
 });
 
 exports.Mail = async (body) => {
-
-  const { name, email, message,isClient } =body
+  const { name, email, message, isClient } = body;
   try {
     const sentMassageToClient = {
       from: process.env.SMTP_USER,
@@ -46,9 +45,12 @@ exports.Mail = async (body) => {
       html: "<h1> test data</h1>",
     };
 
-    const info = await transport.sendMail(sentMassageToClient);
-    const info2 = await transport.sendMail(sentMassageToAstro);
-     return info;
+    const [infoAstro, infoClient] = await Promise.all([
+      transport.sendMail(sentMassageToClient),
+      transport.sendMail(sentMassageToAstro),
+    ]);
+
+    return { infoAstro, infoClient };
   } catch (error) {
     console.log("Mail senting error:", error);
     return { error };
@@ -56,31 +58,31 @@ exports.Mail = async (body) => {
 };
 
 exports.inquiryMail = async (body) => {
-
   try {
-  
-  const formathtml = formathtmlResponse(body);
+    const formathtml = formathtmlResponse(body);
 
-  const sentMassageToAstro = {
-    from: process.env.SMTP_USER,
-    to: process.env.TO,
-    subject: `This inquiry from ${body.fullName}`,
-    html: formathtml,
-  };
+    const sentMassageToAstro = {
+      from: process.env.SMTP_USER,
+      to: process.env.TO,
+      subject: `This inquiry from ${body.fullName}`,
+      html: formathtml,
+    };
 
-   const sentMassageToClient = {
+    const sentMassageToClient = {
       from: process.env.SMTP_USER,
       to: body.email,
       subject: `Your mail has been received`,
       text: `Your inquiry is sent to the astrologer. We will inform you as soon as possible`,
       // html: "<h1> test data</h1>",
-    }
+    };
 
-  const info = await transport.sendMail(sentMassageToAstro);
-  const info1 = await transport.sendMail(sentMassageToClient);
-    
+    const [infoAstro, infoClient] = await Promise.all([
+      transport.sendMail(sentMassageToClient),
+      transport.sendMail(sentMassageToAstro),
+    ]);
+
+    return { infoAstro, infoClient };
   } catch (error) {
-    console.log(error)
-    
+    console.log(error);
   }
 };
